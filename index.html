@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Kotlin Documentation</title>
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header>Kotlin Basic Syntax</header>
+
+      <ul>
+        <li>
+          <a class="nav-link" href="#Package_definition_and_imports"
+            >Package definition and imports</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Program_entry_point"
+            >Program entry point</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Functions">Functions</a></li>
+        <li><a class="nav-link" href="#Variables">Variables</a></li>
+        <li><a class="nav-link" href="#Comments">Comments</a></li>
+        <li>
+          <a class="nav-link" href="#String_templates">String templates</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Conditional_expressions"
+            >Conditional expressions</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Nullable_values_and_null_checks"
+            >Nullable values and null checks</a
+          >
+        </li>
+        <li>
+          <a class="nav-link" href="#Type_checks_and_automatic_casts"
+            >Type checks and automatic casts</a
+          >
+        </li>
+        <li><a class="nav-link" href="#for_loop">for loop</a></li>
+        <li><a class="nav-link" href="#while_loop">while loop</a></li>
+        <li><a class="nav-link" href="#when_expression">when expression</a></li>
+        <li><a class="nav-link" href="#Ranges">Ranges</a></li>
+        <li><a class="nav-link" href="#Collections">Collections</a></li>
+        <li>
+          <a class="nav-link" href="#Creating_basic_classes_and_their_instances"
+            >Creating basic classes and their instances</a
+          >
+        </li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-doc">
+      <section class="main-section" id="Package_definition_and_imports">
+        <header>Package definition and imports</header>
+
+        <article>
+          <p>Package specification should be at the top of the source file:</p>
+
+          <code data-lang="kotlin">
+            package my.demo import kotlin.text.* // ...
+          </code>
+
+          <p>
+            It is not required to match directories and packages: source files
+            can be placed arbitrarily in the file system.
+          </p>
+
+          <ul>
+            <li>
+              See
+              <a href="https://kotlinlang.org/docs/reference/packages.html"
+                >Packages</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="Program_entry_point">
+        <header>Program entry point</header>
+
+        <article>
+          <p>An entry point of a Kotlin application is the main function.</p>
+
+          <code data-lang="kotlin">
+            fun main() { println("Hello world!") }
+          </code>
+
+          <ul>
+            <li>
+              Let's begin with
+              <a href="https://play.kotlinlang.org/">Playground</a>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="Functions">
+        <header>Functions</header>
+
+        <article>
+          <p>Function having two Int parameters with Int return type:</p>
+
+          <code data-lang="kotlin">
+            fun sum(a: Int, b: Int): Int { return a + b }
+          </code>
+
+          <p>Function with an expression body and inferred return type:</p>
+
+          <code data-lang="kotlin"> fun sum(a: Int, b: Int) = a + b </code>
+
+          <p>Function returning no meaningful value:</p>
+
+          <code data-lang="kotlin">
+            fun printSum(a: Int, b: Int): Unit { println("sum of $a and $b is
+            ${a + b}") }
+          </code>
+
+          <p>Unit return type can be omitted:</p>
+
+          <code data-lang="kotlin">
+            fun printSum(a: Int, b: Int) { println("sum of $a and $b is ${a +
+            b}") }
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a href="https://kotlinlang.org/docs/reference/functions.html"
+                >Functions</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="Variables">
+        <header>Variables</header>
+
+        <article>
+          <p>
+            Read-only local variables are defined using the keyword val. They
+            can be assigned a value only once.
+          </p>
+
+          <code data-lang="kotlin">
+            val a: Int = 1 // immediate assignment val b = 2 // `Int` type is
+            inferred val c: Int // Type required when no initializer is provided
+            c = 3 // deferred assignment
+          </code>
+
+          <p>Variables that can be reassigned use the var keyword:</p>
+
+          <code data-lang="kotlin">
+            var x = 5 // `Int` type is inferred x += 1
+          </code>
+
+          <p>Top-level variables:</p>
+
+          <code data-lang="kotlin">
+            val PI = 3.14 var x = 0 fun incrementX() { x += 1 }
+          </code>
+
+          <ul>
+            <li>
+              See also
+              <a href="https://kotlinlang.org/docs/reference/properties.html"
+                >Properties And Fields.</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="Comments">
+        <header>Comments</header>
+
+        <article>
+          <p>
+            Just like most modern languages, Kotlin supports single-line (or
+            end-of-line) and multi-line (block) comments.
+          </p>
+
+          <code data-lang="kotlin">
+            // This is an end-of-line comment /* This is a block comment on
+            multiple lines. */
+          </code>
+
+          <p>Block comments in Kotlin can be nested.</p>
+
+          <code data-lang="kotlin">
+            /* The comment starts here /* contains a nested comment */ and ends
+            here. */
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a href="https://kotlinlang.org/docs/reference/kotlin-doc.html"
+                >Documenting Kotlin Code</a
+              >
+              for information on the documentation comment syntax.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="String_templates">
+        <header>String templates</header>
+
+        <code data-lang="kotlin">
+          var a = 1 // simple name in template: val s1 = "a is $a" a = 2 //
+          arbitrary expression in template: val s2 = "${s1.replace("is",
+          "was")}, but now is $a"
+        </code>
+
+        <ul>
+          <li>
+            See
+            <a
+              href="https://kotlinlang.org/docs/reference/basic-types.html#string-templates"
+              >String templates</a
+            >
+            for details.
+          </li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Conditional_expressions">
+        <header>Conditional expressions</header>
+
+        <code data-lang="kotlin">
+          fun maxOf(a: Int, b: Int): Int { if (a > b) { return a } else { return
+          b } }
+        </code>
+
+        <p>In Kotlin, if can also be used as an expression:</p>
+
+        <code data-lang="kotlin">
+          fun maxOf(a: Int, b: Int) = if (a > b) a else b
+        </code>
+
+        <ul>
+          <li>
+            See
+            <a
+              href="https://kotlinlang.org/docs/reference/control-flow.html#if-expression"
+              >if-expressions</a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Nullable_values_and_null_checks">
+        <header>Nullable values and null checks</header>
+
+        <article>
+          <p>
+            A reference must be explicitly marked as nullable when null value is
+            possible.
+          </p>
+
+          <p>Return null if str does not hold an integer:</p>
+
+          <code data-lang="kotlin">
+            fun parseInt(str: String): Int? { // ... }
+          </code>
+
+          <p>Use a function returning nullable value:</p>
+
+          <code data-lang="kotlin">
+            fun printProduct(arg1: String, arg2: String) { val x =
+            parseInt(arg1) val y = parseInt(arg2) // Using `x * y` yields error
+            because they may hold nulls. if (x != null && y != null) { // x and
+            y are automatically cast to non-nullable after null check println(x
+            * y) } else { println("'$arg1' or '$arg2' is not a number") } }
+          </code>
+
+          <p>or</p>
+
+          <code data-lang="kotlin">
+            // ... if (x == null) { println("Wrong number format in arg1:
+            '$arg1'") return } if (y == null) { println("Wrong number format in
+            arg2: '$arg2'") return } // x and y are automatically cast to
+            non-nullable after null check println(x * y)
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a href="https://kotlinlang.org/docs/reference/null-safety.html"
+                >Null-safety</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="Type_checks_and_automatic_casts">
+        <header>Type checks and automatic casts</header>
+
+        <article>
+          <p>
+            The is operator checks if an expression is an instance of a type. If
+            an immutable local variable or property is checked for a specific
+            type, there's no need to cast it explicitly:
+          </p>
+
+          <code data-lang="kotlin">
+            fun getStringLength(obj: Any): Int? { if (obj is String) { // `obj`
+            is automatically cast to `String` in this branch return obj.length }
+            // `obj` is still of type `Any` outside of the type-checked branch
+            return null }
+          </code>
+
+          <p>or</p>
+
+          <code data-lang="kotlin">
+            fun getStringLength(obj: Any): Int? { if (obj !is String) return
+            null // `obj` is automatically cast to `String` in this branch
+            return obj.length }
+          </code>
+
+          <p>or even</p>
+
+          <code data-lang="kotlin">
+            fun getStringLength(obj: Any): Int? { // `obj` is automatically cast
+            to `String` on the right-hand side of `&&` if (obj is String &&
+            obj.length > 0) { return obj.length } return null }
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a href="https://kotlinlang.org/docs/reference/classes.html"
+                >Classes</a
+              >
+              and
+              <a href="https://kotlinlang.org/docs/reference/typecasts.html"
+                >Type casts</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="for_loop">
+        <header>for loop</header>
+
+        <article>
+          <code data-lang="kotlin">
+            val items = listOf("apple", "banana", "kiwifruit") for (item in
+            items) { println(item) }
+          </code>
+
+          <p>or</p>
+
+          <code data-lang="kotlin">
+            val items = listOf("apple", "banana", "kiwifruit") for (index in
+            items.indices) { println("item at $index is ${items[index]}") }
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a
+                href="https://kotlinlang.org/docs/reference/control-flow.html#for-loops"
+                >for loop</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="while_loop">
+        <header>while loop</header>
+
+        <article>
+          <code data-lang="kotlin">
+            val items = listOf("apple", "banana", "kiwifruit") var index = 0
+            while (index < items.size) { println("item at $index is
+            ${items[index]}") index++ }
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a
+                href="https://kotlinlang.org/docs/reference/control-flow.html#while-loops"
+                >while loop</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="when_expression">
+        <header>when expression</header>
+
+        <code data-lang="kotlin">
+          fun describe(obj: Any): String = when (obj) { 1 -> "One" "Hello" ->
+          "Greeting" is Long -> "Long" !is String -> "Not a string" else ->
+          "Unknown" }
+        </code>
+
+        <ul>
+          <li>
+            See
+            <a
+              href="https://kotlinlang.org/docs/reference/control-flow.html#when-expression"
+              >when expression</a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Ranges">
+        <header>Ranges</header>
+
+        <article>
+          <p>Check if a number is within a range using in operator:</p>
+
+          <code data-lang="kotlin">
+            val x = 10 val y = 9 if (x in 1..y+1) { println("fits in range") }
+          </code>
+
+          <p>Check if a number is out of range:</p>
+
+          <code data-lang="kotlin">
+            val list = listOf("a", "b", "c") if (-1 !in 0..list.lastIndex) {
+            println("-1 is out of range") } if (list.size !in list.indices) {
+            println("list size is out of valid list indices range, too") }
+          </code>
+
+          <p>Iterating over a range:</p>
+
+          <code data-lang="kotlin"> for (x in 1..5) { print(x) } </code>
+
+          <p>or over a progression:</p>
+
+          <code data-lang="kotlin">
+            for (x in 1..10 step 2) { print(x) } println() for (x in 9 downTo 0
+            step 3) { print(x) }
+          </code>
+
+          <ul>
+            <li>
+              See
+              <a href="https://kotlinlang.org/docs/reference/ranges.html"
+                >Ranges</a
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="main-section" id="Collections">
+        <header>Collections</header>
+
+        <p>Iterating over a collection:</p>
+
+        <code data-lang="kotlin"> for (item in items) { println(item) } </code>
+
+        <p>Checking if a collection contains an object using in operator:</p>
+
+        <code data-lang="kotlin">
+          when { "orange" in items -> println("juicy") "apple" in items ->
+          println("apple is fine too") }
+        </code>
+
+        <p>Using lambda expressions to filter and map collections:</p>
+
+        <code data-lang="kotlin">
+          val fruits = listOf("banana", "avocado", "apple", "kiwifruit") fruits
+          .filter { it.startsWith("a") } .sortedBy { it } .map {
+          it.toUpperCase() } .forEach { println(it) }
+        </code>
+
+        <ul>
+          <li>
+            See
+            <a
+              href="https://kotlinlang.org/docs/reference/collections-overview.html"
+              >Collections overview</a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <section
+        class="main-section"
+        id="Creating_basic_classes_and_their_instances"
+      >
+        <header>Creating basic classes and their instances</header>
+
+        <code data-lang="kotlin">
+          val rectangle = Rectangle(5.0, 2.0) val triangle = Triangle(3.0, 4.0,
+          5.0)
+        </code>
+
+        <ul>
+          <li>
+            See
+            <a href="https://kotlinlang.org/docs/reference/classes.html"
+              >classes</a
+            >
+            and
+            <a
+              href="https://kotlinlang.org/docs/reference/object-declarations.html"
+              >objects and instances</a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+
+        <p>
+          All the documentation in this page is taken from
+          <a
+            href="https://kotlinlang.org/docs/reference/basic-syntax.html#defining-packages"
+            >kotlinlang.org</a
+          >
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
